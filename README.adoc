@@ -1,0 +1,23 @@
+= Gravitee.io Service External API
+
+== Description
+
+
+```yml
+services:
+  external-api:
+    type: mulesoft
+    endpoint: https://mulesoft_management_host_url
+    username: user
+    password: pwd
+    # Sharding tags configuration
+    # Allows to define inclusion/exclusion sharding tags to only deploy a part of APIs on MuleSoft.
+    # To exclude just prefix the tag with '!'.
+    # Use ',' to separate tags.
+    # Example: tags: external, !private
+    tags: mulesoft
+    mulesoft:
+      organization: orgId
+      environment: envId
+```
+
