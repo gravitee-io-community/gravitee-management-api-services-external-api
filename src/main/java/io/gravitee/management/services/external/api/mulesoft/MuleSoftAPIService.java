@@ -15,17 +15,16 @@
  */
 package io.gravitee.management.services.external.api.mulesoft;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.gravitee.common.util.Maps;
-import io.gravitee.management.model.api.ApiEntity;
-import io.gravitee.management.model.parameters.Key;
-import io.gravitee.management.service.ParameterService;
 import io.gravitee.management.services.external.api.APIService;
 import io.gravitee.management.services.external.api.mulesoft.model.MuleSoftApiEntity;
 import io.gravitee.management.services.external.api.mulesoft.model.MuleSoftAssetEntity;
 import io.gravitee.management.services.external.api.mulesoft.model.MuleSoftEndpointEntity;
+import io.gravitee.rest.api.model.api.ApiEntity;
+import io.gravitee.rest.api.model.parameters.Key;
+import io.gravitee.rest.api.service.ParameterService;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.ContentType;
@@ -43,7 +42,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 import static java.lang.String.format;
 import static org.apache.http.HttpHeaders.*;
 
@@ -290,7 +288,7 @@ public class MuleSoftAPIService implements APIService {
         muleSoftApiEntity.setInstanceLabel(description);
 
         final MuleSoftEndpointEntity endpoint = new MuleSoftEndpointEntity();
-        endpoint.setUri(parameterService.find(Key.PORTAL_ENTRYPOINT) + api.getProxy().getContextPath());
+        endpoint.setUri(parameterService.find(Key.PORTAL_ENTRYPOINT) + api.getProxy().getVirtualHosts().iterator().next().getPath());
         endpoint.setProxyUri(api.getProxy().getGroups().iterator().next().getEndpoints().iterator().next().getTarget());
         muleSoftApiEntity.setEndpoint(endpoint);
         return muleSoftApiEntity;

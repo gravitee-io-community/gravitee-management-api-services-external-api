@@ -41,9 +41,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.gravitee.management</groupId>
-            <artifactId>gravitee-management-api-service</artifactId>
-            <version>1.28.0</version>
+            <groupId>io.gravitee.rest.api</groupId>
+            <artifactId>gravitee-rest-api-service</artifactId>
+            <version>3.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

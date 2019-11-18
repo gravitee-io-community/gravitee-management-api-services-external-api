@@ -1,6 +1,7 @@
 package io.gravitee.management.services.external.api;
 
-import io.gravitee.management.model.api.ApiEntity;
+
+import io.gravitee.rest.api.model.api.ApiEntity;
 
 /**
  * @author Azize ELAMRANI (azize.elamrani at graviteesource.com)
